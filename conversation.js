@@ -5,6 +5,9 @@ const RC_userInputTextPlaceholder = 'Scrie mesajul tau aici.';
 const RC_firstBotMessage = 'Salut! Eu sunt Maria. Cu ce te pot ajuta?';
 const RC_noEntryBotMessage = 'Te rog sa scrii un mesaj!';
 const RC_botErrorMessage = 'Am o eroare de comunicare cu serverul. Te rog sa incerci din nou mai tarziu.';
+
+const RC_userAvatarSrc = 'https://robochat.pro/vlad/icons/userAvatar.png';
+const RC_botAvatarSrc = 'https://robochat.pro/vlad/icons/botAvatar.png';
 ///////////////////////////////////////// OTHER VARIABLES /////////////////////////////////////////
 let chatOpen = false;
 let overflowChecked = false;
@@ -165,7 +168,7 @@ const printUserMessage = (message) => {
                         <span>${message}</span>
                     </div>
 					<div class="user-icon">
-                        <img id="user-avatar" height="35px" width="35px" src="images/userAvatar.png" alt="user avatar" />
+                        <img id="user-avatar" height="35px" width="35px" src="${RC_userAvatarSrc}" alt="user avatar" />
                     </div>
 	`;
 	conversation.appendChild(newLine);
