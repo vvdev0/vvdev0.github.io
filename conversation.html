@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/7cc36811ec.js" crossorigin="anonymous"></script>
+
+    <link href="conversation.css" rel="stylesheet">
+
+    <title>Conversatie cu Maria</title>
+</head>
+
+<body>
+    <div id="robo-container">
+        <div id="chat-section">
+            <ul id="conversation"></ul>
+        </div>
+        <div id="input-section">
+            <input type="text" data-lettercase="No Case" id="user-input-text" placeholder="Please Wait" value="" disabled>
+            <button id="user-input-btn" type="button" onclick="">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                    <path d="M24 0l-6 22-8.129-7.239 7.802-8.234-10.458 7.227-7.215-1.754 24-12zm-15 16.668v7.332l3.258-4.431-3.258-2.901z">
+                    </path>
+                </svg>
+            </button>
+        </div>
+        <div id="branding-section">
+            <button id="download-conversation" class="download-button">Download</button>
+            <a href="https://robochat.ro" id="branding-anchor" target="_blank">
+                <span>powered by</span>
+                <i class="fa fa-rocket"></i>
+                <span id="brand">RoboChat</span>
+            </a>
+        </div>
+    </div>
+
+    <script src="conversation.js"></script>
+</body>
