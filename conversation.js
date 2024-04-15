@@ -7,7 +7,7 @@ const RC_noEntryBotMessage = 'Te rog sa scrii un mesaj!';
 const RC_botErrorMessage = 'Am o eroare de comunicare cu serverul. Te rog sa incerci din nou mai tarziu.';
 
 const RC_userAvatarSrc = 'https://robochat.pro/vlad/icons/userAvatar.png';
-const RC_botAvatarSrc = 'https://robochat.pro/vlad/icons/botAvatar.png';
+const RC_botAvatarSrc = 'https://robochat.pro/vlad/icons/botAvatarMaria.png';
 ///////////////////////////////////////// OTHER VARIABLES /////////////////////////////////////////
 let chatOpen = false;
 let overflowChecked = false;
