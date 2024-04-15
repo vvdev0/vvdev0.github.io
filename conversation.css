@@ -35,7 +35,7 @@ body {
     width: 100%;
     max-width: 470px;
     min-height: 0px;
-    min-width: 250px;
+    min-width: 260px;
     flex-grow: 1;
     overflow-y: auto;
     overflow-x: hidden;
