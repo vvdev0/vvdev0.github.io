@@ -103,7 +103,7 @@ const printBotMessage = (message) => {
 	const newLine = document.createElement('li');
 	newLine.classList.add('bot-line', 'conversation-line');
 	newLine.innerHTML = `
-	 				<div class="bot-icon">
+	 				<div class="avatar-icon">
                         <img id="bot-avatar" height="35px" width="35px" src="${RC_botAvatarSrc}" alt="RoboChat avatar" />
                     </div>
                     <div class="conv-text bot-text">
@@ -122,7 +122,7 @@ const printBotError = (message) => {
 	const newLine = document.createElement('li');
 	newLine.classList.add('bot-line', 'conversation-line', 'temp-element');
 	newLine.innerHTML = `
-					<div class="bot-icon">
+					<div class="avatar-icon">
             	        <img id="bot-avatar" height="35px" width="35px" src="${RC_botAvatarSrc}" alt="RoboChat avatar" />
                     </div>
                     <div class="conv-text bot-text">
@@ -144,7 +144,7 @@ const printBotBusyIndicator = () => {
 	const newLine = document.createElement('li');
 	newLine.classList.add('bot-line', 'conversation-line', 'temp-element');
 	newLine.innerHTML = `
-	 				<div class="bot-icon">
+	 				<div class="avatar-icon">
                         <img id="bot-avatar" height="35px" width="35px" src="${RC_botAvatarSrc}" alt="RoboChat avatar" />
                     </div>
                     <div class="conv-text bot-text">
@@ -167,7 +167,7 @@ const printUserMessage = (message) => {
                     <div class="conv-text user-text">
                         <span>${message}</span>
                     </div>
-					<div class="user-icon">
+					<div class="avatar-icon">
                         <img id="user-avatar" height="35px" width="35px" src="${RC_userAvatarSrc}" alt="user avatar" />
                     </div>
 	`;
