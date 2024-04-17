@@ -9,7 +9,6 @@ const RC_botErrorMessage = 'Am o eroare de comunicare cu serverul. Te rog sa inc
 const RC_userAvatarSrc = 'https://robochat.pro/vlad/icons/userAvatar.png';
 const RC_botAvatarSrc = 'https://robochat.pro/vlad/icons/botAvatarMaria.png';
 ///////////////////////////////////////// OTHER VARIABLES /////////////////////////////////////////
-let chatOpen = false;
 let overflowChecked = false;
 /////////////////////////////////////////// DOM ELEMENTS //////////////////////////////////////////
 
@@ -45,6 +44,32 @@ function downloadConvo() {
 
 ///////////////////////////////////// HELPER FUNCTIONS ////////////////////////////////////
 
+// const splitLongText = (longText) => {
+// 	const delimiters = /(?<=[.!?])\s*/;
+// 	const substrings = longText.split(delimiters);
+// 	const groupedSubstrings = [];
+// 	let currentGroup = '';
+// 	let groupCharacterCount = 0;
+
+// 	substrings.forEach((substring) => {
+// 		const substringCharacterCount = substring.length;
+// 		if (groupCharacterCount + substringCharacterCount > 160) {
+// 			groupedSubstrings.push(currentGroup.trim());
+// 			currentGroup = substring;
+// 			groupCharacterCount = substringCharacterCount;
+// 		} else {
+// 			if (currentGroup !== '') {
+// 				currentGroup += ' ';
+// 			}
+// 			currentGroup += substring;
+// 			groupCharacterCount += substringCharacterCount;
+// 		}
+// 	});
+// 	groupedSubstrings.push(currentGroup.trim());
+
+// 	return groupedSubstrings;
+// };
+
 const splitLongText = (longText) => {
 	const delimiters = /(?<=[.!?])\s*/;
 	const substrings = longText.split(delimiters);
@@ -53,17 +78,25 @@ const splitLongText = (longText) => {
 	let groupCharacterCount = 0;
 
 	substrings.forEach((substring) => {
+		// Remove single digit at the end of a substring after a period
+		if (substring.match(/\.\d$/)) {
+			substring = substring.slice(0, -2); // Remove the last two characters
+		}
+
 		const substringCharacterCount = substring.length;
-		if (groupCharacterCount + substringCharacterCount > 160) {
-			groupedSubstrings.push(currentGroup.trim());
-			currentGroup = substring;
-			groupCharacterCount = substringCharacterCount;
-		} else {
-			if (currentGroup !== '') {
-				currentGroup += ' ';
+		// Check if the substring is not empty after removing the single digit
+		if (substringCharacterCount > 0) {
+			if (groupCharacterCount + substringCharacterCount > 160) {
+				groupedSubstrings.push(currentGroup.trim());
+				currentGroup = substring;
+				groupCharacterCount = substringCharacterCount;
+			} else {
+				if (currentGroup !== '') {
+					currentGroup += ' ';
+				}
+				currentGroup += substring;
+				groupCharacterCount += substringCharacterCount;
 			}
-			currentGroup += substring;
-			groupCharacterCount += substringCharacterCount;
 		}
 	});
 	groupedSubstrings.push(currentGroup.trim());
