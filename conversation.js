@@ -315,8 +315,7 @@ const requestBotInput = (text) => {
 
 		const url = window.location.href;
 
-		xhr.send('text=' + encodeURIComponent(text) + '&url=' + encodeURIComponent(url)); //+ '&botID=' + botID
-		//console.log('text=' + encodeURIComponent(text) + '&url=' + encodeURIComponent(url)); //+ '&botID=' + botID
+		xhr.send('text=' + encodeURIComponent(text) + '&url=' + encodeURIComponent(url) + '&botID=' + botID);
 	});
 };
 
