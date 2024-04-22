@@ -85,7 +85,8 @@ const splitLongText = (longText) => {
 
 		const substringCharacterCount = substring.length;
 		// Check if the substring is not empty after removing the single digit
-		if (substringCharacterCount > 0) {
+		// and also ensure the substring is not just one character long
+		if (substringCharacterCount > 1) {
 			if (groupCharacterCount + substringCharacterCount > 160) {
 				groupedSubstrings.push(currentGroup.trim());
 				currentGroup = substring;
@@ -215,6 +216,19 @@ const printUserMessage = (message) => {
 ////////////////////////////////// CONVERSATION FUNCTIONS /////////////////////////////////
 
 const initializeConvo = () => {
+	// Get the query string portion of the URL
+	const queryString = window.location.search;
+
+	// Parse the query string into key-value pairs
+	const searchParams = new URLSearchParams(queryString);
+
+	// Get the value of a specific parameter
+	const paramValue = searchParams.get('botId');
+
+	// Now you can use paramValue as needed
+	console.log("Value of 'param':", paramValue);
+
+	printBotMessage('botId: ' + paramValue);
 	printBotMessage(RC_firstBotMessage);
 	askUserToAnswer();
 };
