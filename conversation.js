@@ -225,9 +225,6 @@ const initializeConvo = () => {
 	// Get the value of a specific parameter
 	const paramValue = searchParams.get('botId');
 
-	// Now you can use paramValue as needed
-	console.log("Value of 'param':", paramValue);
-
 	printBotMessage('botId: ' + paramValue);
 	printBotMessage(RC_firstBotMessage);
 	askUserToAnswer();
