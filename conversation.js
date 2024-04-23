@@ -8,6 +8,7 @@ const RC_userAvatarSrc = 'https://robochat.pro/vlad/icons/userAvatar.png';
 const RC_botAvatarSrc = 'https://robochat.pro/vlad/icons/botAvatarMaria.png';
 ///////////////////////////////////////// OTHER VARIABLES /////////////////////////////////////////
 let overflowChecked = false;
+let botId;
 /////////////////////////////////////////// DOM ELEMENTS //////////////////////////////////////////
 
 const chatSection = document.getElementById('chat-section');
@@ -223,6 +224,7 @@ const initializeConvo = () => {
 	// Get the value of a specific parameter
 	const paramValue = searchParams.get('botId');
 
+	botId = paramValue;
 	printBotMessage('botId: ' + paramValue);
 	printBotMessage(RC_firstBotMessage);
 	askUserToAnswer();
