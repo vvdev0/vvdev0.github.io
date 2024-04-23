@@ -1,5 +1,3 @@
-//const botID = document.getElementById('bot-widget-script').getAttribute('customer');
-
 ///////////////////////////////////// CUSTOMIZATION VARIABLES ////////////////////////////////////
 const RC_userInputTextPlaceholder = 'Scrie mesajul tau aici.';
 const RC_firstBotMessage = 'Salut! Eu sunt Maria. Cu ce te pot ajuta?';
@@ -312,7 +310,7 @@ const requestBotInput = (text) => {
 
 		const url = window.location.href;
 
-		xhr.send('text=' + encodeURIComponent(text) + '&url=' + encodeURIComponent(url) + '&botID=' + botID);
+		xhr.send('text=' + encodeURIComponent(text) + '&url=' + encodeURIComponent(url) + '&botId=' + botId);
 	});
 };
 
