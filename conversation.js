@@ -21,11 +21,13 @@ const downloadButton = document.getElementById('download-conversation');
 const conversationHistory = [];
 
 const addMessageToHistory = (role, message, time) => {
-	conversationHistory.push({
-		role: role,
-		message: message,
-		timestamp: time,
-	});
+	conversationHistory.push(
+		`${time} - ${role}: ${message}`
+
+		// role: role,
+		// message: message,
+		// timestamp: time,
+	);
 };
 
 function downloadConvo() {
@@ -263,6 +265,7 @@ const askBotToAnswer = (userText) => {
 		.catch((error) => {
 			printBotError(RC_botErrorMessage);
 			console.error(error);
+			askUserToAnswer();
 		});
 };
 
