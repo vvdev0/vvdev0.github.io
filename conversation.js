@@ -45,32 +45,6 @@ function downloadConvo() {
 
 ///////////////////////////////////// HELPER FUNCTIONS ////////////////////////////////////
 
-// const splitLongText = (longText) => {
-// 	const delimiters = /(?<=[.!?])\s*/;
-// 	const substrings = longText.split(delimiters);
-// 	const groupedSubstrings = [];
-// 	let currentGroup = '';
-// 	let groupCharacterCount = 0;
-
-// 	substrings.forEach((substring) => {
-// 		const substringCharacterCount = substring.length;
-// 		if (groupCharacterCount + substringCharacterCount > 160) {
-// 			groupedSubstrings.push(currentGroup.trim());
-// 			currentGroup = substring;
-// 			groupCharacterCount = substringCharacterCount;
-// 		} else {
-// 			if (currentGroup !== '') {
-// 				currentGroup += ' ';
-// 			}
-// 			currentGroup += substring;
-// 			groupCharacterCount += substringCharacterCount;
-// 		}
-// 	});
-// 	groupedSubstrings.push(currentGroup.trim());
-
-// 	return groupedSubstrings;
-// };
-
 const splitLongText = (longText) => {
 	const delimiters = /(?<=[.!?])\s*/;
 	const substrings = longText.split(delimiters);
@@ -88,19 +62,29 @@ const splitLongText = (longText) => {
 		// Check if the substring is not empty after removing the single digit
 		// and also ensure the substring is not just one character long
 		if (substringCharacterCount > 1) {
-			if (groupCharacterCount + substringCharacterCount > 160) {
+			// Check if the string is already longer than 160 chars. Also checks
+			// if the current group is empty (which means nothing was added yet),
+			// so an empty groupedSubstring is not created
+			if (groupCharacterCount + substringCharacterCount > 160 && groupCharacterCount !== 0) {
+				// Push the currentGroup as an individual groupedSubstring
 				groupedSubstrings.push(currentGroup.trim());
+				// Current group is reassigned to the current substring, and the new group
+				// char count is set to the lenght of the current substring
 				currentGroup = substring;
 				groupCharacterCount = substringCharacterCount;
 			} else {
+				// here we are under 160 chars
+				// If current group is not empty we add a space to separate the phrases
 				if (currentGroup !== '') {
 					currentGroup += ' ';
 				}
+				// add the substring to the current group and increase the chars count accordingly
 				currentGroup += substring;
 				groupCharacterCount += substringCharacterCount;
 			}
 		}
 	});
+	// push the last substring, even if the group is under 160 chars
 	groupedSubstrings.push(currentGroup.trim());
 
 	return groupedSubstrings;
@@ -131,7 +115,8 @@ const removeTempElements = () => {
 
 ///////////////////////////////////// PRINT FUNCTIONS /////////////////////////////////////
 
-const printBotMessage = (message) => {
+const printBotMessage = (message, color) => {
+	// color = ..., size = ..., font-family = .....
 	let botMessageTimestamp = Date.now();
 	addMessageToHistory('bot', message, botMessageTimestamp);
 	removeTempElements();
@@ -142,7 +127,7 @@ const printBotMessage = (message) => {
                         <img id="bot-avatar" height="35px" width="35px" src="${RC_botAvatarSrc}" alt="RoboChat avatar" />
                     </div>
                     <div class="conv-text bot-text">
-                        <span>${message}</span>
+                        <span style="color: ${color}">${message}</span>
                     </div>`;
 	conversation.appendChild(newLine);
 	const newTime = document.createElement('div');
@@ -263,7 +248,7 @@ const askBotToAnswer = (userText) => {
 			handleBotInput(response);
 		})
 		.catch((error) => {
-			printBotError(RC_botErrorMessage);
+			printBotMessage(RC_botErrorMessage, 'red');
 			console.error(error);
 			askUserToAnswer();
 		});
